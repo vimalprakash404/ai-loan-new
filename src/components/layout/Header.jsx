@@ -1,8 +1,17 @@
-import React from 'react';
-import { Shield } from 'lucide-react';
+import React, { useState } from 'react';
+import { Shield, LogOut, User } from 'lucide-react';
 import { Link } from 'react-router-dom'; // Add this import
+import { useAuth } from '../../context/AuthContext';
+import UserProfile from '../auth/UserProfile';
 
 const Header = ({ selectedBatch, currentStep }) => {
+  const { user, logout } = useAuth();
+  const [showProfile, setShowProfile] = useState(false);
+
+  const handleLogout = () => {
+    logout();
+  };
+
   return (
     <header className="bg-white shadow-sm border-b border-gray-200">
       <div className="px-4 sm:px-6 lg:px-8">
@@ -26,16 +35,36 @@ const Header = ({ selectedBatch, currentStep }) => {
                 <span>Step {currentStep}/3</span>
               </div>
             )}
-            <div className="flex items-center gap-2 text-sm text-gray-600">
-              <div className="w-2 h-2 bg-green-500 rounded-full"></div>
-              John
-            </div>
-            <div className="w-8 h-8 bg-blue-100 rounded-full flex items-center justify-center">
-              <span className="text-sm font-medium text-blue-600">AD</span>
+            <div className="flex items-center gap-3">
+              <div className="flex items-center gap-2 text-sm text-gray-600">
+                <div className="w-2 h-2 bg-green-500 rounded-full"></div>
+                <span className="hidden sm:inline">{user?.name}</span>
+              </div>
+              <div className="flex items-center gap-2">
+                <button
+                  onClick={() => setShowProfile(true)}
+                  className="w-8 h-8 bg-blue-100 rounded-full flex items-center justify-center hover:bg-blue-200 transition-colors"
+                  title="View Profile"
+                >
+                  <span className="text-sm font-medium text-blue-600">{user?.avatar}</span>
+                </button>
+                <button
+                  onClick={handleLogout}
+                  className="p-2 text-gray-400 hover:text-gray-600 hover:bg-gray-100 rounded-lg transition-colors"
+                  title="Logout"
+                >
+                  <LogOut className="w-4 h-4" />
+                </button>
+              </div>
             </div>
           </div>
         </div>
       </div>
+      
+      <UserProfile 
+        isOpen={showProfile} 
+        onClose={() => setShowProfile(false)} 
+      />
     </header>
   );
 };
