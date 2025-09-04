@@ -8,6 +8,7 @@ import BatchList from './pages/BatchList';
 import FraudDetection from './pages/FraudDetection';
 import MarketIntelligence from './pages/MarketIntelligence';
 import CustomerSearch from './pages/CustomerSearch';
+import UploadPage from './pages/Upload';
 
 const App = () => {
   return (
@@ -17,6 +18,7 @@ const App = () => {
           <ProtectedRoute>
             <Layout>
               <Routes>
+                <Route path='/upload' element={<UploadPage />} />
                 <Route path="/" element={<BatchList />} />
                 <Route path="/batch/:batchId/fraud-detection" element={<FraudDetection />} />
                 <Route path="/batch/:batchId/market-intelligence" element={<MarketIntelligence />} />

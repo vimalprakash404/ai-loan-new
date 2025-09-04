@@ -1,6 +1,7 @@
 import React, { useState } from 'react';
 import { Shield, Eye, EyeOff, Lock, Mail } from 'lucide-react';
 import { useAuth } from '../../context/AuthContext';
+import logo from '../../assets/logo.png'; // Use your new logo file
 
 const LoginForm = () => {
   const [email, setEmail] = useState('');
@@ -25,8 +26,7 @@ const LoginForm = () => {
   };
 
   const demoCredentials = [
-    { email: 'admin@samaishield.com', password: 'admin123', role: 'Administrator' },
-    { email: 'analyst@samaishield.com', password: 'analyst123', role: 'Fraud Analyst' }
+    { email: 'user@ictkerala.org', password: 'Test@9632', role: 'User' },
   ];
 
   const fillDemoCredentials = (credentials) => {
@@ -39,11 +39,15 @@ const LoginForm = () => {
       <div className="w-full max-w-md">
         {/* Logo and Header */}
         <div className="text-center mb-8">
-          <div className="inline-flex items-center justify-center w-16 h-16 bg-blue-600 rounded-2xl mb-4">
-            <Shield className="w-8 h-8 text-white" />
+          <div className="inline-flex items-center justify-center   rounded-2xl mb-4">
+            
+            <img
+              src={logo}
+              alt="SamAI Shield Logo"
+              className="w-40  object-contain" // Bigger logo
+            />
           </div>
-          <h1 className="text-3xl font-bold text-gray-900 mb-2">SamAI Shield</h1>
-          <p className="text-gray-600">AI-Powered Fraud Detection System</p>
+         
         </div>
 
         {/* Login Form */}
@@ -115,7 +119,7 @@ const LoginForm = () => {
           </form>
 
           {/* Demo Credentials */}
-          <div className="mt-6 pt-6 border-t border-gray-200">
+          {/* <div className="mt-6 pt-6 border-t border-gray-200">
             <p className="text-sm text-gray-600 mb-3">Demo Credentials:</p>
             <div className="space-y-2">
               {demoCredentials.map((cred, index) => (
@@ -135,7 +139,7 @@ const LoginForm = () => {
                 </button>
               ))}
             </div>
-          </div>
+          </div> */}
         </div>
 
         {/* Footer */}

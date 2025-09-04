@@ -28,31 +28,19 @@ export const AuthProvider = ({ children }) => {
     return new Promise((resolve, reject) => {
       setTimeout(() => {
         // Demo credentials
-        if (email === 'admin@samaishield.com' && password === 'admin123') {
+        if (email === 'user@ictkerala.org' && password === 'Test@9632') {
           const userData = {
             id: '1',
-            email: 'admin@samaishield.com',
-            name: 'John Admin',
-            role: 'Administrator',
+            email: 'user@ictkerala.org',
+            name: 'John User',
+            role: 'User',
             avatar: 'JA',
             loginTime: new Date().toISOString()
           };
           setUser(userData);
           localStorage.setItem('fraudDetectionUser', JSON.stringify(userData));
           resolve(userData);
-        } else if (email === 'analyst@samaishield.com' && password === 'analyst123') {
-          const userData = {
-            id: '2',
-            email: 'analyst@samaishield.com',
-            name: 'Sarah Analyst',
-            role: 'Fraud Analyst',
-            avatar: 'SA',
-            loginTime: new Date().toISOString()
-          };
-          setUser(userData);
-          localStorage.setItem('fraudDetectionUser', JSON.stringify(userData));
-          resolve(userData);
-        } else {
+        }else {
           reject(new Error('Invalid email or password'));
         }
       }, 1000);

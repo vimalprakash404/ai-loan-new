@@ -3,6 +3,7 @@ import { Shield, LogOut, User } from 'lucide-react';
 import { Link } from 'react-router-dom'; // Add this import
 import { useAuth } from '../../context/AuthContext';
 import UserProfile from '../auth/UserProfile';
+import logo from '../../assets/logo.png'; // Use your new logo file
 
 const Header = ({ selectedBatch, currentStep }) => {
   const { user, logout } = useAuth();
@@ -18,8 +19,14 @@ const Header = ({ selectedBatch, currentStep }) => {
         <div className="flex items-center justify-between h-16">
           <div className="flex items-center gap-3">
             <Link to="/" className="flex items-center gap-3 group"> {/* Add Link here */}
-              <div className="p-2 bg-blue-600 rounded-lg group-hover:bg-blue-700 transition">
-                <Shield className="w-6 h-6 text-white" />
+              <div className="">
+                <img
+                  src={logo}
+                  alt="SamAI Shield Logo"
+                  width={3672}
+                  height={2528}
+                  className="w-16 h-11 object-contain" // Adjusts display size, keeps aspect ratio
+                />
               </div>
               <div>
                 <h1 className="text-xl font-bold text-gray-900 group-hover:text-blue-700 transition">SamAI Shield</h1>
